@@ -344,8 +344,9 @@ impl ExecutionContext {
         ));
         io.append_from_specs(&list, L!(""));
 
-        if function::exists(L!("fish_command_not_found"), ctx.parser()) {
-            let mut buffer = L!("fish_command_not_found").to_owned();
+        let function_name = L!("fish_command_not_found");
+        if function::exists(function_name, ctx.parser()) {
+            let mut buffer = function_name.to_owned();
             for arg in &event_args {
                 buffer.push(' ');
                 buffer.push_utfstr(&escape(arg));
@@ -353,7 +354,7 @@ impl ExecutionContext {
             let parser = ctx.parser();
             let prev_statuses = parser.last_statuses();
 
-            let event = Event::generic(L!("fish_command_not_found").to_owned());
+            let event = Event::generic(function_name.to_owned());
             let b = parser.push_block(Block::event_block(event));
             parser.eval(&buffer, &io);
             parser.pop_block(b);
