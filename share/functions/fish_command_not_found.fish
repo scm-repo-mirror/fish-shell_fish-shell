@@ -71,7 +71,7 @@ else if type -q pkgfile
     #     end
 else
     # Use standard fish command not found handler otherwise
-    function fish_command_not_found --on-event fish_command_not_found
+    function fish_command_not_found
         __fish_default_command_not_found_handler $argv
     end
 end

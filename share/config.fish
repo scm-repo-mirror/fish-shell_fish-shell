@@ -14,7 +14,7 @@ end
 if not status is-interactive
     # Hook up the default as the command_not_found handler
     # if we are not interactive to avoid custom handlers.
-    function fish_command_not_found --on-event fish_command_not_found
+    function fish_command_not_found
         __fish_default_command_not_found_handler $argv
     end
 end
