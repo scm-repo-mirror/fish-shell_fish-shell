@@ -663,7 +663,7 @@ end
 
 function __fish_git_prompt_reset -a type -a op -a var --description "Event handler, resets prompt when functionality changes" \
     --on-variable=__fish_git_prompt_{show_informative_status,use_informative_chars}
-    if status --is-interactive
+    if status is-interactive
         # Clear characters that have different defaults with/without informative status
         set -e ___fish_git_prompt_char_{name,cleanstate,dirtystate,invalidstate,stagedstate,stashstate,stateseparator,untrackedfiles,upstream_ahead,upstream_behind}
         # Clear init so we reset the chars next time.
@@ -673,7 +673,7 @@ end
 
 function __fish_git_prompt_reset_color -a type -a op -a var --description "Event handler, resets prompt when any color changes" \
     --on-variable=__fish_git_prompt_color{'',_prefix,_suffix,_bare,_merging,_cleanstate,_invalidstate,_upstream,_flags,_branch,_dirtystate,_stagedstate,_branch_detached,_stashstate,_untrackedfiles} --on-variable=__fish_git_prompt_showcolorhints
-    if status --is-interactive
+    if status is-interactive
         set -e _$var
         set -e _{$var}_done
         set -e ___fish_git_prompt_init
@@ -686,7 +686,7 @@ end
 
 function __fish_git_prompt_reset_char -a type -a op -a var --description "Event handler, resets prompt when any char changes" \
     --on-variable=__fish_git_prompt_char_{cleanstate,dirtystate,invalidstate,stagedstate,stashstate,stateseparator,untrackedfiles,upstream_ahead,upstream_behind,upstream_diverged,upstream_equal,upstream_prefix}
-    if status --is-interactive
+    if status is-interactive
         set -e ___fish_git_prompt_init
         set -e _$var
     end

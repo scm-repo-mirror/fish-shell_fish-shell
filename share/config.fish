@@ -16,7 +16,7 @@ function __fish_default_command_not_found_handler
     printf (_ "fish: Unknown command: %s\n") (string escape -- $argv[1]) >&2
 end
 
-if not status --is-interactive
+if not status is-interactive
     # Hook up the default as the command_not_found handler
     # if we are not interactive to avoid custom handlers.
     function fish_command_not_found --on-event fish_command_not_found
@@ -148,7 +148,7 @@ and __fish_set_locale
 # Some things should only be done for login terminals
 # This used to be in etc/config.fish - keep it here to keep the semantics
 #
-if status --is-login
+if status is-login
     if command -sq /usr/libexec/path_helper
         __fish_macos_set_env PATH /etc/paths '/etc/paths.d'
         if test -n "$MANPATH"
