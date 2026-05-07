@@ -7,7 +7,7 @@
 # For our purposes, we use both.
 set -l os
 if test -r /etc/os-release
-    set os (string match -r '^ID(?:_LIKE)?\s*=.*' < /etc/os-release | \
+    set os (string match -r '^ID(?:_LIKE)?\s*=.*' < /etc/os-release |
     string replace -r '^ID(?:_LIKE)?\s*=(.*)' '$1' | string trim -c '\'"' | string split " ")
 end
 
