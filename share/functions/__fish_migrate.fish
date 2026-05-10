@@ -55,7 +55,7 @@ end" >$__fish_config_dir/config.fish
         __fish_backup_config_files $relative_filename
         mkdir -p -- (path dirname -- $filename)
         echo >$filename "\
-# This file was created by fish when upgrading to version 4.3, to migrate
+# This file was created by fish when upgrading to version >= 4.3, to migrate
 # the 'fish_key_bindings' variable from its old default scope (universal)
 # to its new default scope (global).  We recommend you delete this file
 # and configure key bindings in ~/.config/fish/config.fish if needed.
@@ -83,9 +83,9 @@ set --erase --universal fish_key_bindings"
     end
     $mark_migration_done
     if $removing_uvars
-        echo -s (set_color --bold) 'fish:' (set_color --reset) " upgraded to version 4.3:"
+        echo -s (set_color --bold) 'fish:' (set_color --reset) " upgraded to version >= 4.3.0:"
         string join \n -- $msg
-        echo 'See also the release notes (type `help relnotes`).'
+        echo 'See also the release notes for 4.3.0 (type `help relnotes`).'
         set -Ue fish_key_bindings $theme_uvars
         set -l sh (__fish_posix_shell)
         eval "$sh -c 'sleep 7 # Please read above notice about universal variables' </dev/null &>/dev/null &"
