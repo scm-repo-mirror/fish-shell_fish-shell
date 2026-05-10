@@ -107,7 +107,7 @@ function __fish_config_theme_uvars_subset_of_historical_default
     set -l matches __fish_config_theme_matches
     $matches fish_color_keyword "$fish_color_command"
     and $matches fish_color_option "$fish_color_param"
-    and $matches fish_color_autosuggestion brblack
+    and $matches fish_color_autosuggestion brblack "555 brblack"
     and $matches fish_color_cancel -r
     and $matches fish_color_command normal blue --reset
     and $matches fish_color_comment red
@@ -125,19 +125,26 @@ function __fish_config_theme_uvars_subset_of_historical_default
     and $matches fish_color_quote yellow
     and $matches fish_color_redirection "cyan --bold"
     and $matches fish_color_search_match \
+        "--background=111" \
+        "--background=brblack" \
         "bryellow --background=brblack" \
         "bryellow --background=brblack --bold" \
         "white --background=brblack" \
         "white --background=brblack --bold"
-    and $matches fish_color_selection "white --background=brblack --bold"
+    and $matches fish_color_selection \
+        "white --background=brblack --bold" \
+        "white --bold --background=brblack"
     and $matches fish_color_status red
     and $matches fish_color_user brgreen
     and $matches fish_color_valid_path --underline
     and $matches fish_color_background
     and $matches fish_pager_color_background
     and $matches fish_pager_color_completion
-    and $matches fish_pager_color_description "yellow -i" "yellow --italics"
-    and $matches fish_pager_color_prefix "normal --bold --underline" "--bold --underline"
+    and $matches fish_pager_color_description "B3A06D yellow -i" "yellow -i" "yellow --italics"
+    and $matches fish_pager_color_prefix \
+        "normal --bold --underline" \
+        "cyan --bold --underline" \
+        "--bold --underline"
     and $matches fish_pager_color_progress \
         "brwhite --background=cyan" \
         "brwhite --background=cyan --bold"
@@ -149,6 +156,7 @@ function __fish_config_theme_uvars_subset_of_historical_default
     and $matches fish_pager_color_selected_completion
     and $matches fish_pager_color_selected_description
     and $matches fish_pager_color_selected_prefix
+    and $matches fish_color_match --background=brblue
     and for uvar in $argv
         contains $uvar $checked_varnames
         or test -z "$$uvar"
